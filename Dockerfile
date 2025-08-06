@@ -22,4 +22,6 @@ COPY . .
 RUN pip install -r requirements.txt &&  \
     pip install gunicorn
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8080", "--timeout", "600", "app:app"]
+ENV PYTHONUNBUFFERED=1
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers=4", "--threads=8", "--timeout=600", "app:app"]
