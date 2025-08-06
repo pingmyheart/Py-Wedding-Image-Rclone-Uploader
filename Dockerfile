@@ -22,4 +22,4 @@ COPY . .
 RUN pip install -r requirements.txt &&  \
     pip install gunicorn
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8080", "--timeout", "600", "app:app"]
