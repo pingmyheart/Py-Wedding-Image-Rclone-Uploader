@@ -32,6 +32,7 @@ def _copy_to_drive(filepath):
     if result.returncode == 0:
         log.info(f"Successfully copied {filepath} to Google Drive.")
         # Delete the file after copying
+        log.info(f"Deleting file {filepath} after successful upload.")
         os.remove(filepath)
         return 0
     else:
