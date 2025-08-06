@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from configuration.global_configuration import UPLOAD_FOLDER
 from configuration.logging_configuration import logger as log
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'heic', 'heif', 'bmp', 'tiff', 'tif'}
 
 upload_bp = Blueprint('upload', __name__, url_prefix='/py-fea/upload')
 
