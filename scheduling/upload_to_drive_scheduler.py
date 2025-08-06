@@ -2,6 +2,7 @@ import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from configuration import environment_configuration_bean
 from configuration.global_configuration import UPLOAD_FOLDER
 from configuration.logging_configuration import logger as log
 
@@ -18,7 +19,7 @@ def schedule():
 
 def _copy_to_drive(filepath):
     result = subprocess.run(
-        ['rclone', 'copy', filepath, 'gdrive:/matrimonio-francesco-e-antonella'],
+        ['rclone', 'copy', filepath, environment_configuration_bean.get("DRIVE_UPLOAD_REMOTE_AND_FOLDER")],
         capture_output=True,
         text=True)
     # Access stdout and stderr

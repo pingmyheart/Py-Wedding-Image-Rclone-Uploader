@@ -3,3 +3,4 @@
 /venv/
 rclone.conf
 **.iml
+.env
