@@ -24,4 +24,4 @@ RUN pip install -r requirements.txt &&  \
 
 ENV PYTHONUNBUFFERED=1
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers=4", "--threads=8", "--timeout=600", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers=1", "--threads=8", "--timeout=600", "app:app"]
