@@ -44,4 +44,4 @@ def upload():
 
 
 def _allowed_file(filename):
-    return true
+    return True
