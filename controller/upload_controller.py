@@ -8,8 +8,6 @@ from werkzeug.utils import secure_filename
 from configuration.global_configuration import UPLOAD_FOLDER
 from configuration.logging_configuration import logger as log
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'heic', 'heif', 'bmp', 'tiff', 'tif'}
-
 upload_bp = Blueprint('upload', __name__, url_prefix='/py-fea/upload')
 
 
@@ -25,7 +23,7 @@ def upload():
 
     for file in files:
         log.info("[INCOMING FILE] - File received: %s", file.filename)
-        if file and _allowed_file(file.filename):
+        if file:
             # Get file extension
             ext = file.filename.rsplit('.', 1)[1].lower()
             # Generate unique filename with UUID
@@ -41,7 +39,3 @@ def upload():
     log.info("[SUCCESS] - Files saved successfully: %s", saved_files)
     log.info("[SUCCESS] - Upload completed successfully")
     return jsonify({'message': 'Upload successful', 'files': saved_files}), 200
-
-
-def _allowed_file(filename):
-    return True
